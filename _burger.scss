@@ -1,0 +1,85 @@
+$burger-width: 28px !default;
+$burger-height: 22px !default;
+$burger-padding: 4px !default;
+$burger-line-height: 4px !default;
+$burger-line-color: #666 !default;
+$burger-line-rounded: true !default;
+$burger-transition: 0.2s ease-out !default;
+$burger-rotation: 1 !default;
+
+$burger-translateY: ( $burger-height - $burger-line-height ) / 2;
+$burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
+
+/**
+ * Burger icon that can animate to a close icon
+ *
+ * span    = middle line
+ * :before = top line
+ * :after  = bottom line
+ *
+ */
+.burger {
+	display: inline-block;
+	width: $burger-width + $burger-padding * 2;
+	height: $burger-height + $burger-padding * 2;
+	position: relative;
+	outline: 0;
+	cursor: pointer;
+
+	&:focus {
+		outline: 0;
+	}
+
+	span,
+	&:before,
+	&:after {
+		background-color: $burger-line-color;
+		display: block;
+		height: $burger-line-height;
+		left: $burger-padding;
+		position: absolute;
+		transition: all $burger-transition;
+		width: $burger-width;
+
+		@if ( $burger-line-rounded ) {
+			border-radius: $burger-line-height / 2;
+		}
+
+	}
+
+	span {
+		top: 50%;
+		margin-top: -$burger-line-height/2; // Center the middle line
+		opacity: 1;
+	}
+
+	&:before,
+	&:after {
+		content: ' ';
+	}
+
+	&:before {
+		top: $burger-padding;
+	}
+
+	&:after {
+		bottom: $burger-padding;
+	}
+
+}
+
+.burger.is-on {
+
+	span {
+		opacity: 0;
+	}
+
+	&:before {
+		transform: translateY( $burger-translateY ) rotate( -$burger-rotate );
+	}
+
+	&:after {
+		transform: translateY( -($burger-translateY) ) rotate( $burger-rotate );
+	}
+
+}
