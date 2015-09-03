@@ -4,27 +4,28 @@ $burger-padding: 4px !default;
 $burger-line-height: 4px !default;
 $burger-line-color: #666 !default;
 $burger-line-rounded: true !default;
-$burger-transition: 0.2s ease-out !default;
+$burger-animate: true !default;
+$burger-transition: .2s ease-out !default;
 $burger-rotation: 1 !default;
 
-$burger-translateY: ( $burger-height - $burger-line-height ) / 2;
+$burger-translate-y: ( $burger-height - $burger-line-height ) / 2;
 $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 
-/**
- * Burger icon that can animate to a close icon
- *
- * span    = middle line
- * :before = top line
- * :after  = bottom line
- *
- */
+//
+// Burger icon that can animate to a close icon
+//
+// span    = middle line
+// :before = top line
+// :after  = bottom line
+//
+//
 .burger {
-	display: inline-block;
-	width: $burger-width + $burger-padding * 2;
-	height: $burger-height + $burger-padding * 2;
-	position: relative;
-	outline: 0;
 	cursor: pointer;
+	display: inline-block;
+	height: $burger-height + $burger-padding * 2;
+	outline: 0;
+	position: relative;
+	width: $burger-width + $burger-padding * 2;
 
 	&:focus {
 		outline: 0;
@@ -48,9 +49,9 @@ $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 	}
 
 	span {
-		top: 50%;
-		margin-top: -$burger-line-height/2; // Center the middle line
+		margin-top: -$burger-line-height / 2; // Center the middle line
 		opacity: 1;
+		top: 50%;
 	}
 
 	&:before,
@@ -68,18 +69,22 @@ $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 
 }
 
-.burger.is-on {
+@if ( $burger-animate ) {
 
-	span {
-		opacity: 0;
-	}
+	.burger.is-on {
 
-	&:before {
-		transform: translateY( $burger-translateY ) rotate( -$burger-rotate );
-	}
+		span {
+			opacity: 0;
+		}
 
-	&:after {
-		transform: translateY( -($burger-translateY) ) rotate( $burger-rotate );
+		&:before {
+			transform: translateY( $burger-translate-y ) rotate( -$burger-rotate );
+		}
+
+		&:after {
+			transform: translateY( $burger-translate-y ) rotate( $burger-rotate );
+		}
+
 	}
 
 }
