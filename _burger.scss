@@ -82,7 +82,7 @@ $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 		}
 
 		&:after {
-			transform: translateY( $burger-translate-y ) rotate( $burger-rotate );
+			transform: translateY( -$burger-translate-y ) rotate( $burger-rotate );
 		}
 
 	}
