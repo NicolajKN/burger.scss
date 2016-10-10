@@ -7,6 +7,9 @@ $burger-line-rounded: true !default;
 $burger-animate: true !default;
 $burger-transition: .2s ease-out !default;
 $burger-rotation: 1 !default;
+$burger-font-family: sans-serif !default;
+$burger-font-size: 0.7em;
+$burger-letter-spacing: 0px !default;
 
 $burger-translate-y: ( $burger-height - $burger-line-height ) / 2;
 $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
@@ -14,10 +17,9 @@ $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 //
 // Burger icon that can animate to a close icon
 //
-// span    = middle line
+// .burger__line    = middle line
 // :before = top line
 // :after  = bottom line
-//
 //
 .burger {
 	cursor: pointer;
@@ -31,7 +33,7 @@ $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 		outline: 0;
 	}
 
-	span,
+	.burger__line,
 	&:before,
 	&:after {
 		background-color: $burger-line-color;
@@ -48,7 +50,7 @@ $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 
 	}
 
-	span {
+	.burger__line {
 		margin-top: -$burger-line-height / 2; // Center the middle line
 		opacity: 1;
 		top: 50%;
@@ -69,11 +71,27 @@ $burger-rotate: 45deg + ( 180deg * ( $burger-rotation - 1 ) );
 
 }
 
+.burger--has-text {
+	margin-bottom: $burger-font-size;
+
+	.burger__text {
+		font-family: $burger-font-family;
+		font-size: $burger-font-size;
+		left: 50%;
+		letter-spacing: $burger-letter-spacing;
+		line-height: 1;
+		position: absolute;
+		top: 100%;
+		transform: translate( -50%, 0 );
+		color: $burger-line-color;
+	}
+}
+
 @if ( $burger-animate ) {
 
 	.burger.is-on {
 
-		span {
+		.burger__line {
 			opacity: 0;
 		}
 
