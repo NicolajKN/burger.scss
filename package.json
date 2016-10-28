@@ -1,0 +1,19 @@
+{
+  "name": "burger.scss",
+  "version": "1.0.0",
+  "description": "Sass burger menu icon that can animate to \"close\" icon",
+  "main": "_burger.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolajKN/burger.scss.git"
+  },
+  "author": "Nicolaj Kirkegaard Nielsen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicolajKN/burger.scss/issues"
+  },
+  "homepage": "https://github.com/NicolajKN/burger.scss#readme"
+}
