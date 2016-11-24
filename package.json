@@ -1,6 +1,6 @@
 {
   "name": "burger.scss",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Sass burger menu icon that can animate to \"close\" icon",
   "main": "_burger.scss",
   "scripts": {
